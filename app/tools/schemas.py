@@ -22,6 +22,15 @@ class SendEmailOutput(BaseModel):
     status : str
     task_id : str
 
+class CreateTaskInput(BaseModel):
+    title: str = Field(..., min_length=1, max_length=200)
+    due_iso: Optional[str] = Field(default=None, description="ISO datetime string (optional)")
+    notes: Optional[str] = Field(default=None, max_length=2000)
+
+class CreateTaskOutput(BaseModel):
+    status: str
+    task_id: str
+
 
 # Generic invoke wrapper (like a tiny MCP-ish call format)
 
